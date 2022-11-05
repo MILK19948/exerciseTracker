@@ -1,0 +1,55 @@
+﻿@model ExerciseTrackerViewModel
+@using exerciseTrackerDataAccess.Moldels;
+
+@{
+    string pageType = Model.CurrentExercise.ID > 0 ? "Update Exercise" : "Create Exercise";
+
+    ViewData["Title"] = $"Practice Application | {pageType}";
+}
+
+<form action="~/ExerciseTracker/Index" method="post">
+    <div id="info">
+        <div class="row">
+            <div class="col-6 offset-3 text-center">
+                <h1 class="display-4" style="margin: 15px 0px;">@pageType</h1>
+            </div>
+        </div>
+        <div class="form-row">
+
+            <div class="col-md-3 offset-md-3 form-group">
+                <label>FirstName: </label>
+                <input type="text" required class="form-control" name="firstName" value="@Model.CurrentExercise.FirstName" />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-3 offset-md-3 form-group">
+                <label>SecondName: </label>
+                <input type="text" required class="form-control" name="secondName:" value="@Model.CurrentExercise.SecondName:" />
+            </div>
+
+        </div>
+
+        <div class="form-row">
+
+            <div class="col-md-6 offset-md-3 form-group">
+                <label>WorkoutName: </label>
+                <input type="text" required class="form-control" name="workoutName:" value="@Model.CurrentExercise.WorkoutName:" />
+            </div>
+
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-6 offset-md-3 form-group">
+                <label>WorkoutTime: </label>
+                <input type="text" required class="form-control" name="workoutTime" value="@Model.CurrentExercise.WorkoutTime" />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 offset-md-3">
+                <button type="button" class="btn btn-secondary" onclick="location.href = '/ExerciseTracker/Index'">CANCEL</button>
+                <button type="submit" class="btn btn-primary">SAVE EXERCISE</button>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="ID" value="@Model.CurrentExercise.ID" />
+</form>
